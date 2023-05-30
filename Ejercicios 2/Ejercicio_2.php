@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="../css/styles.css" rel="stylesheet"/>
     <link href="../css/merostylo.css" rel="stylesheet"/>
-    <title>Ejercicio 1</title>
+    <title>Ejercicio 2</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg bg-dark">
@@ -19,8 +19,8 @@
 
                 </div>
                 <ul class="navbar-nav d-flex">
-                    <li class="nav-item"><a class="nav-link active" href="Ejercicio_1.php">Ejercicio 1</a></li>
-                    <li class="nav-item"><a class="nav-link" href="Ejercicio_2.php">Ejercicio 2</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Ejercicio_1.php">Ejercicio 1</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="Ejercicio_2.php">Ejercicio 2</a></li>
                     <li class="nav-item"><a class="nav-link" href="Ejercicio_3.php">Ejercicio 3</a></li>
                     <li class="nav-item"><a class="nav-link" href="Ejercicio_4.php">Ejercicio 4</a></li>
                     <li class="nav-item"><a class="nav-link" href="Ejercicio_5.php">Ejercicio 5</a></li>
@@ -118,4 +118,64 @@
         </div>
     </section>
 </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Escolar</h1>
+    <?php
+    if (empty($_REQUEST)) {
+    ?>
+        <form action="" method="post">
+            <label for="num">Cuantos Alumnos hay en el curso? <input type="text" name="num"></label>
+            <input type="submit" value="enviar" name="submit">
+        </form>
+    <?php
+    } elseif (isset($_REQUEST['num'])) {
+    ?>
+        <form action="" method="post">
+            <?php
+            $num = $_REQUEST['num'];
+            for ($i = 0; $i < $num; $i++) {
+            ?>
+                <p>Ingrese el nombre: <input type="text" name="nombre[]"></p>
+                Ingrese las notas del alumno <?php echo ($i + 1); ?>:
+                <input type="number" name="nota1[]" value="">
+                <input type="number" name="nota2[]" value="">
+                <input type="number" name="nota3[]" value="">
+                <br>
+            <?php
+            }
+            ?>
+            <input type="submit" value="Enviar">
+        </form>
+    <?php
+    } else {
+        $nombre = $_REQUEST['nombre'];
+        $notas1 = $_REQUEST['nota1'];
+        $notas2 = $_REQUEST['nota2'];
+        $notas3 = $_REQUEST['nota3'];
+        $nota = 0;
+        for ($i = 0; $i < count($notas1); $i++) {
+            $suma = ($notas1[$i] + $notas2[$i] + $notas3[$i]) / 3;
+            echo "El estudiante " . $nombre[$i] . ": " . $suma . "<br>";
+            if ($suma > $nota) {
+                $auxi = $i;
+                $promemayo = $suma;
+            }
+        }
+        echo "<br><br><br>Mejor promedio es de: " . $nombre[$auxi] . " Con un promedio de: " . $promemayo;
+    }
+    ?>
+</body>
+
 </html>

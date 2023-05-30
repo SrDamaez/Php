@@ -44,7 +44,7 @@
                                             <input type="text" class="form-control" name="valorcompra" id="">
                                         </div>
                                         <div class="row pt-4">
-                                            <input type="submit" value="enviar" name="submit" class="btn btn-outline-light mt-auto">
+                                            <input type="submit" value="Enviar" name="submit" class="btn btn-outline-light mt-auto">
                                         </div>
                                     </form>
                                 </div>
