@@ -1,0 +1,14 @@
+Oscuro
+rgb(31, 10, 78)
+
+Oscuro más claro
+rgb(49, 25, 100)
+
+claro
+#4618AC
+
+Claro más claro
+#6530d8
+
+Claro transparente
+rgba(101, 48, 216, 0.74)
