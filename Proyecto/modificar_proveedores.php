@@ -18,14 +18,13 @@ include_once("conexion.php");
 		$nombre=$_REQUEST['nombre'];
         $ubicacion=$_REQUEST['ubicacion'];
         $telefono=$_REQUEST['telefono'];
-
     ?>
+
     <form action="editar_proveedores.php" method="POST">
         <tr>
-            <td><input disabled type="text" name="nombre" value="<?php echo $nombre; ?>"></td>
+            <td><input type="text" class="disabled" name="nombre" value="<?php echo $nombre; ?>"></td>
             <td><input type="text" name="ubicacion" value="<?php echo $ubicacion; ?>"></td>
             <td><input type="text" name="telefono" value="<?php echo $telefono; ?>"></td>
-
 
             <input type="submit" value="Editar">
         </tr>

@@ -49,7 +49,7 @@
 
       <nav id="navbar" class="nav-menu navbar">
         <ul>
-          <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
+          <li><a href="index.php" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="consulta_productos.php" class="nav-link scrollto"><i class="bx bx-package"></i> <span>Productos</span></a></li>
           <li><a href="consulta_proveedores.php" class="nav-link scrollto"><i class="bx bxs-truck"></i> <span>Proveedores</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>

@@ -2,11 +2,11 @@
 
 include_once("conexion.php");
 
-$nombre=$_REQUEST['nombre'];
-$ubicacion=$_REQUEST['ubicacion'];
-$telefono=$_REQUEST['telefono'];
+$nombre = $_POST['nombre'];
+$ubicacion = $_POST['ubicacion'];
+$telefono = $_POST['telefono'];
 
-$conexion->query("UPDATE proveedor set nombre='$nombre', ubicacion='$ubicacion', telefono='$telefono' where nombre='$nombre'");
+$conexion->query("UPDATE proveedor SET ubicacion='$ubicacion', telefono='$telefono' WHERE nombre='$nombre'");
 
 
 header("Location: consulta_proveedores.php");
