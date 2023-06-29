@@ -113,10 +113,12 @@ include_once("conexion.php");
                                             <input type="text" name="proveedor" class="form-control" value="<?php echo $proveedor; ?>">
                                         </div>
                                     </div>
-                                <div class="text-center">
-
-                                    <input type="submit" value="Editar" class="btn btn-primary">
-                                </div>
+                                    <div class="text-center">
+                                        <input type="submit" value="Editar" class="btn btn-primary">
+                                        <a class="btn btn-danger" href="consulta_productos.php?" title="Cancelar">
+                                            <i class="icon-edit">Cancelar</i>
+                                        </a>
+                                    </div>
                                 </form>
                             </div>
                         </div>

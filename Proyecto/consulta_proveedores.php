@@ -4,70 +4,134 @@ include_once("conexion.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listado Proveedores</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Quiosquito</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="assets/css/style.css" rel="stylesheet">
 </head>
 
+<body>
 
-<table class="table table-bordered">
-    <tr class="well">
-        <td>
-            <h1 align="center">Listado Proveedores</h1>
-            <center>
-                <form name="form3" method="post" action="" class="form-search">
-                    <div class="input-prepend input-append">
-                        <span class="add-on"><i class="icon-search"></i></span>
-                        <input type="text" name="buscar" autocomplete="off" class="input-xxlarge search-query" 
-                        autofocus placeholder="Buscar Proveedores por Nombre">
+    <!-- ======= Mobile nav toggle button ======= -->
+    <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+
+    <!-- ======= Header ======= -->
+    <header id="header">
+        <div class="d-flex flex-column">
+            <div class="profile">
+                <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+                <h1 class="text-light">Nombre Vendedor</h1>
+                <h5 class="text-white-50 text-center">Cargo Persona</h5>
+            </div>
+
+            <nav id="navbar" class="nav-menu navbar">
+                <ul>
+                    <li><a href="index.php" class="nav-link scrollto"><i class="bx bx-home"></i> <span>Home</span></a></li>
+                    <li><a href="consulta_productos.php" class="nav-link scrollto"><i class="bx bx-package"></i> <span>Productos</span></a></li>
+                    <li><a href="consulta_proveedores.php" class="nav-link scrollto active"><i class="bx bxs-truck"></i> <span>Proveedores</span></a></li>
+                    <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
+                    <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
+                    <li><a href="#contact" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
+                </ul>
+            </nav><!-- .nav-menu -->
+        </div>
+    </header><!-- End Header -->
+
+    <main id="main">
+
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Listado de Proveedores</h2>
+                    <p>Se mestran en pantalla una lista de los proveedores que se encuentran registrados actualmente.</p>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12 pt-4 pt-lg-0 content">
+                        <div class="container">
+                            <div class="row justify-content-center mb-3 mt-2">
+                                <div class="col-2">
+                                    <a href="insertar_proveedores.php" class="btn btn-success">Insertar Proveedores</a>
+                                </div>
+                            </div>
+                            <div class="row justify-content-center mb-4">
+                                <div class="col-6">
+                                    <form name="form3" method="post" action="" class="form-search">
+                                        <div class="input-group">
+                                            <span class="input-group-text"><i class="bi bi-search"></i></span>
+                                            <input type="text" name="buscar" autocomplete="off" class="form-control" autofocus placeholder="Buscar Proveedores por Nombre">
+                                            <button type="submit" class="btn btn-primary"><strong>Buscar</strong></button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-12">
+                            <table class="table table-bordered">
+                                <tr class="well">
+                                    <td>ID</td>
+                                    <td><strong>Nombre</strong></td>
+                                    <td>Ubicacion</td>
+                                    <td>Telefono</td>
+                                    <td>Modificar</td>
+                                </tr>
+                                <?php
+                                    if(isset($_POST['buscar'])){
+                                    $buscar=($_POST['buscar']);
+                                    $consulta=$conexion->query("SELECT * FROM proveedor WHERE nombre LIKE '%$buscar%' ORDER BY nombre DESC");	
+                                }else{
+                                    $consulta=$conexion->query("SELECT * FROM proveedor");		
+                                }
+                                while($row=$consulta->fetch_array()){
+                                ?>
+
+                                <tr>
+                                    <td><?php echo $row['id_proveedor']; ?></td>
+                                    <td><?php echo $row['nombre']; ?></td>
+                                    <td><?php echo $row['ubicacion']; ?></td>
+                                    <td><?php echo $row['telefono']; ?></td>
+                                    <td>
+                                        <center>
+                                            <a class="btn btn-primary" href="modificar_proveedores.php?
+                                                id_proveedor=<?php echo $row['id_proveedor'] ?> &
+                                                nombre=<?php echo $row['nombre'] ?> &
+                                                ubicacion=<?php echo $row['ubicacion'] ?> &
+                                                telefono=<?php echo $row['telefono'] ?>"     title="Editar">
+                                                <i class="icon-edit">Editar</i>
+                                            </a>
+                                        </center>
+                                    </td> 
+                                </tr>
+                            <?php } ?>
+                            </table>
+                        </div>
                     </div>
-                <button type="submit" class="btn" name="buton"><strong>Buscar</strong></button>
-                </form>
-            </center>
-        </td>
-    </tr>
-</table>
-<a href="insertar_proveedores.php"><button>Insertar</button></a>
-<table class="table table-bordered">
-    <tr class="well">
-        <td><strong>Nombre</strong></td>
-        <td>Ubicacion</td>
-        <td>Telefono</td>
-    </tr>
-    <?php
-        if(isset($_POST['buscar'])){
-        $buscar=($_POST['buscar']);
-        $consulta=$conexion->query("SELECT * FROM proveedor WHERE nombre LIKE '%$buscar%' ORDER BY nombre DESC");	
-    }else{
-        $consulta=$conexion->query("SELECT * FROM proveedor");		
-    }		
-        
-    while($row=$consulta->fetch_array()){
-    ?>
-    <!-- <form action="editar.php" method="POST"> -->
-    <tr>
-        <td><?php echo $row['nombre']; ?></td>
-        <td><?php echo $row['ubicacion']; ?></td>
-        <td><?php echo $row['telefono']; ?></td>
-        <td>
-            <center>
-                <a class="btn btn-primary" href="modificar_proveedores.php?
-                    nombre=<?php echo $row['nombre'] ?> &
-                    ubicacion=<?php echo $row['ubicacion'] ?> &
-                    telefono=<?php echo $row['telefono'] ?> 
-                " title="Editar">
-                    <i class="icon-edit">Editar</i>
-                </a>
-            </center>
-        </td>
-        
-</form> 
-</tr>
-<?php } ?>
-</table>
-
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
 </html>
